@@ -1,0 +1,60 @@
+<div class="w3-row w3-border-top">
+  
+  {{ "<!-- Recipes -->" | safeHTML }} 
+  <div class="w3-col m4 w3-center">
+
+    {{ range where (where .Site.Pages "Section" "cooking" ) ".Params.title" "==" "Recipes" }}
+      <div class="w3-container">
+        <h1 class="w3-text-theme" style="font-size:3vw;" href="{{ .RelPermalink }}">{{ .Title }}</h1>
+      </div>
+    
+      <div class="w3-container w3-text-theme" style="font-size:1.5vw;">
+        <p>{{ .Page.Params.description }}</p>
+      </div>
+      
+      <div class="w3-padding">
+        <a href="{{ .Permalink }}" class="w3-btn w3-round-large w3-theme" style="font-size:1.5vw;">{{ .Page.Params.Buttontext }}</a>
+      </div>
+    {{ end }}
+
+  </div>
+  
+  {{ "<!-- Blog -->" | safeHTML }} 
+  <div class="w3-col m4 w3-center">
+
+    {{ range where (where .Site.Pages "Section" "posts" ) ".Params.title" "==" "Blog" }}
+      <div class="w3-container">
+        <h1 class="w3-text-theme" style="font-size:3vw;" href="{{ .RelPermalink }}">{{ .Page.Params.Pagetitle }}</h1>
+      </div>
+    
+      <div class="w3-container w3-text-theme" style="font-size:1.5vw;">
+        <p>{{ .Page.Params.description }}</p>
+      </div>
+      
+      <div class="w3-padding">
+        <a href="{{ .Permalink }}" class="w3-btn w3-round-large w3-theme" style="font-size:1.5vw;">{{ .Page.Params.Buttontext }}</a>
+      </div>
+    {{ end }}
+
+  </div>
+
+  {{ "<!-- Music -->" | safeHTML }} 
+  <div class="w3-col m4 w3-center">
+
+    {{ range where (where .Site.Pages "Section" "cooking" ) ".Params.title" "==" "Methods" }}
+      <div class="w3-container">
+        <h1 class="w3-text-theme" style="font-size:3vw;" href="{{ .RelPermalink }}">{{ .Title }}</h1>
+      </div>
+    
+      <div class="w3-container w3-text-theme" style="font-size:1.5vw;">
+        <p>{{ .Page.Params.description }}</p>
+      </div>
+      
+      <div class="w3-padding">
+        <a href="{{ .Permalink }}" class="w3-btn w3-round-large w3-theme" style="font-size:1.5vw;">{{ .Page.Params.Buttontext }}</a>
+      </div>
+    {{ end }}
+
+  </div>
+
+</div>

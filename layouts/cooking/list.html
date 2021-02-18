@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+<div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+
+  <!-- Hero Image -->
+  <img src="{{ .Page.Params.Image }}" class="w3-image">
+  
+  <div class="w3-container w3-large w3-display-bottomright w3-theme-l1">
+    <p>{{ with .Page.Params.imageCredit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+  </div>
+
+</div>
+
+
+
+{{ "<!-- Portfolio Section -->" | safeHTML }}
+<div class="w3-container w3-padding" style="margin-left:10%">
+
+  <div class="w3-xxxlarge w3-text-theme">{{ .Page.Params.pagetitle }}</div>
+     
+  <div class="w3-padding-32 w3-large w3-text-theme">{{ .Summary }}</div>
+
+  {{ "<!-- Portfolio List -->" | safeHTML }}
+  <div class="w3-container w3-padding alternating">
+    
+    {{ $parent := .Page }}
+    {{ range (where .Site.Pages.ByWeight "Section" .Section ) }}
+      {{ if eq .Parent $parent }}
+        
+        <section style="min-height:300px;">
+          <div class="alternate_img"><img src="{{ .Params.Image }}" class="w3-padding-large" style="max-width:300px"></div>
+          <div class="w3-padding-large">
+            <a href="{{ .Permalink }}" style="font-size:2vw">{{ .Title }}</a>
+
+            <p>{{ .Summary }}</p>
+          
+          </div>
+        </section>
+  
+      
+      {{ end }}
+    {{ end }}
+  
+  </div>
+
+</div>
+
+{{ end }}

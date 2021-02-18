@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+{{ "<!-- Home Image with Logo Text -->" | safeHTML }}
+<div class="w3-display-container" style="max-height:600px; overflow:hidden;">
+
+  {{ "<!-- Hero Image -->" | safeHTML }}
+  <img src="{{ .Site.Params.Image }}" class="w3-image">
+
+  <div class="w3-container w3-display-bottomright w3-text-black w3-large">
+    <p>{{ with .Site.Params.imageCredit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+  </div>
+
+</div>
+
+<div class="w3-container" style="margin-left:10%">
+
+  <div class="w3-text-theme w3-border-bottom w3-padding-large w3-white" style="font-size:4vw"> Page Not Found!</div>
+  
+  <div class="w3-text-theme w3-white w3-padding-large">
+    Well, I really don't know what happened here, but the page you're looking for doesn't seem to exist.
+  </div>
+
+</div>
+
+{{ end }}

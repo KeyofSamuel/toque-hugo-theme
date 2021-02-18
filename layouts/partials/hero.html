@@ -1,0 +1,21 @@
+{{ "<!-- Home Image with Logo Text -->" | safeHTML }}
+<div class="w3-display-container" style="max-height:600px; overflow:hidden;">
+
+  <img src="{{ .Site.Params.hero.image }}" style="width:100%;">
+
+  <div class="w3-display-left" style="white-space:nowrap;">
+    <div class="w3-center w3-padding w3-black w3-animate-opacity"> <span class="w3-text-theme-light" style="font-size:4vw;">{{ .Site.Params.hero.heading }}</span><br /><span class="w3-text-theme-light" style="font-size:2vw;">{{ .Site.Params.hero.subheading }}</span></div>
+    <br />
+  </div>
+
+</div>
+
+
+{{ "<!-- Hero Lower Description -->" | safeHTML }}
+<div class="w3-row">
+	
+  <div class="w3-col s4 w3-center"><p></p></div>
+  <div class="w3-col s4 w3-center w3-large"><p class="w3-text-theme" style="font-size:1.5vw;">{{ with .Site.Params.hero.description }}<span>{{ . }}</span>{{ end }}</p></div>
+  <div class="w3-col s4 w3-center"><p></p></div>
+  
+</div>

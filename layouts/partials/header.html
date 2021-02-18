@@ -1,0 +1,28 @@
+{{ "<!-- Navbar (sit on top) -->" | safeHTML }}
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-text-theme w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+ 
+    <a class="w3-bar-item w3-button w3-text-theme w3-hide-small" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+ 
+    {{ end }}
+  
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-text-theme w3-hide w3-hide-large w3-hide-medium">
+    
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+ 
+    <a class="w3-bar-item w3-button" onclick="togglefunction()" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+ 
+    {{ end }}
+  
+  </div>
+</div>

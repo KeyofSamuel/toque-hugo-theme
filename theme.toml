@@ -1,0 +1,12 @@
+# theme.toml for Coffeecup theme
+
+name = "toque"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+description = ""
+homepage = "https://keyofsamuel.com/"
+min_version = "0.80.0"
+
+[author]
+  name = "Samuel A. Campbell"
+  homepage = "https://keyofsamuel.com"
