@@ -1,4 +1,4 @@
-# Coffeecup Hugo Theme
+# Toque Hugo Theme
 
 This theme probably could not be considered to be in a usable state.  It still has some ver rough edges, is missing a features and needs several layout improvements.  It was created from the **Coffeecup** hugo theme [https://github.com/KeyofSamuel/coffeecup-hugo-theme] to keep the look and feel very similar.
 
