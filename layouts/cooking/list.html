@@ -1,15 +1,54 @@
 {{ define "main" }}
 
-<div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+{{ if .Page.Params.Image }}
 
-  <!-- Hero Image -->
-  <img src="{{ .Page.Params.Image }}" class="w3-image">
-  
-  <div class="w3-container w3-large w3-display-bottomright w3-theme-l1">
-    <p>{{ with .Page.Params.imageCredit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+  {{ "<!-- Page Specified Hero Image -->" | safeHTML }}
+  <div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+
+
+    <img src="{{ .Page.Params.Image }}" class="w3-image">
+    
+    <div class="w3-container w3-large w3-display-bottomright w3-theme-l1">
+      <p>{{ with .Page.Params.imageCredit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+    </div>
+
   </div>
 
-</div>
+{{ else }}
+
+  {{ "<!-- Default to Site Hero Image -->" | safeHTML }}
+  <div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+    
+    <img src="{{ .Site.Params.hero.image }}" style="width:100%;"> 
+    
+    <div class="w3-container w3-display-bottomright w3-theme-l1">
+      <p>{{ with .Site.Params.hero.credit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+    </div>
+
+  </div>
+
+{{ end }}
+
+
+
+
+    {{ "<!-- Category List -->" | safeHTML }}
+    <span class="w3-text-theme w3-border-bottom" style="font-size:2vw">Categories</span>
+  
+    <div>
+    {{ $categories := $.Site.Taxonomies.categories.ByCount }}
+    {{ $v1 := where $categories "Count" ">=" 1 }}
+    {{ $v2 := where $v1 "Term" "not in" (slice "hugo" "tags" "rss") }}
+    {{ range $v2 }}
+    {{ if .Term }}
+    {{ $catURL := printf "categories/%s" .Term | relURL }}
+    <a href="{{ $catURL }}" class="btn btn-default w3-text-theme" role="button" style="text-transform: uppercase; font-size:1vw;">
+      {{ .Term }} <span>({{ .Count }})</span>
+    </a>
+    <br />
+    {{ end }}
+    {{ end }}
+    </div>
 
 
 
