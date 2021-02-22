@@ -30,51 +30,43 @@
 {{ end }}
 
 
+{{ "<!-- Category Section -->" | safeHTML }}
+<div class="w3-container w3-padding">
 
+  {{ "<!-- Category Heading and Summary -->" | safeHTML }}
+  <div class="w3-container w3-padding" style="margin-left:10%">
+    <div class="w3-text-theme" style="font-size:4vw">{{ .Page.Params.pagetitle }}</div>
+    <div class="w3-padding-32 w3-text-theme">{{ .Summary }}</div>
+  </div>
 
-    {{ "<!-- Category List -->" | safeHTML }}
-    <span class="w3-text-theme w3-border-bottom" style="font-size:2vw">Categories</span>
-  
-    <div>
-    {{ $categories := $.Site.Taxonomies.categories.ByCount }}
-    {{ $v1 := where $categories "Count" ">=" 1 }}
-    {{ $v2 := where $v1 "Term" "not in" (slice "hugo" "tags" "rss") }}
-    {{ range $v2 }}
-    {{ if .Term }}
-    {{ $catURL := printf "categories/%s" .Term | relURL }}
-    <a href="{{ $catURL }}" class="btn btn-default w3-text-theme" role="button" style="text-transform: uppercase; font-size:1vw;">
-      {{ .Term }} <span>({{ .Count }})</span>
-    </a>
-    <br />
-    {{ end }}
-    {{ end }}
-    </div>
-
-
-
-{{ "<!-- Portfolio Section -->" | safeHTML }}
-<div class="w3-container w3-padding" style="margin-left:10%">
-
-  <div class="w3-xxxlarge w3-text-theme">{{ .Page.Params.pagetitle }}</div>
-     
-  <div class="w3-padding-32 w3-large w3-text-theme">{{ .Summary }}</div>
-
-  {{ "<!-- Portfolio List -->" | safeHTML }}
-  <div class="w3-container w3-padding alternating">
+  {{ "<!-- Category List -->" | safeHTML }}
+  <div class="w3-container w3-padding w3-col">
     
     {{ $parent := .Page }}
     {{ range (where .Site.Pages.ByWeight "Section" .Section ) }}
       {{ if eq .Parent $parent }}
         
-        <section style="min-height:300px;">
-          <div class="alternate_img"><img src="{{ .Params.Image }}" class="w3-padding-large" style="max-width:300px"></div>
+        <div class="w3-quarter w3-center">
+
+          {{ if .Page.Params.Image }}
+
+            {{ "<!-- Page Specified Hero Image -->" | safeHTML }}
+            <div><img src="{{ .Params.Image }}" class="w3-padding-large" style="max-width:80%"></div>
+
+          {{ else }}
+
+            {{ "<!-- Default to Site Hero Image -->" | safeHTML }}
+            <div><img src="{{ .Site.Params.hero.image }}" class="w3-padding-large" style="max-width:80%"></div>
+            
+          {{ end }}
+
           <div class="w3-padding-large">
             <a href="{{ .Permalink }}" style="font-size:2vw">{{ .Title }}</a>
 
             <p>{{ .Summary }}</p>
           
           </div>
-        </section>
+        </div>
   
       
       {{ end }}
