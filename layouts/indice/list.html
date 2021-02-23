@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ partial "list-cover.html" . }}
+
+{{ "<!-- Working -->" | safeHTML }}
+<div class="w3-center w3-row">
+  
+{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+  {{ if and (eq "categories" $taxonomyname) }}
+    {{ range $key, $value := $taxonomy }}
+
+      <div class="w3-quarter">
+        <div class="w3-text-theme" style="font-size:1.5vw">
+          <a href="/categories/{{ $key | urlize }}">{{ replace $key "-" " " }}</a>
+        </div>
+
+        {{if $value }}
+        {{end}}
+        
+        {{ range $value.Pages }}
+          {{ if eq .Type "recipe" }}
+            
+            <div>
+              <a href="{{ .URL | relURL}}" class="w3-button w3-hover-white">
+                {{ .Title }}
+              </a>
+            </div>
+        
+          {{ end }}
+        {{end}}
+      </div>
+
+    {{ end }}
+  {{ end }}
+{{ end }}
+  
+</div>
+
+
+{{ end }}
