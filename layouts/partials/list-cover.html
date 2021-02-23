@@ -1,0 +1,28 @@
+{{ if .Page.Params.Image }}
+
+  {{ "<!-- Page Specified Hero Image -->" | safeHTML }}
+  <div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+
+
+    <img src="{{ .Page.Params.Image }}" class="w3-image">
+    
+    <div class="w3-container w3-large w3-display-bottomright w3-theme-l1">
+      <p>{{ with .Page.Params.imageCredit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+    </div>
+
+  </div>
+
+{{ else }}
+
+  {{ "<!-- Default to Site Hero Image -->" | safeHTML }}
+  <div class="w3-display-container" style="max-height:450px; overflow:hidden;">
+    
+    <img src="{{ .Site.Params.hero.image }}" style="width:100%;"> 
+    
+    <div class="w3-container w3-display-bottomright w3-theme-l1">
+      <p>{{ with .Site.Params.hero.credit }}<span>Photo Credit: <b>{{ . }}</b></span>{{ end }}</p>
+    </div>
+
+  </div>
+
+{{ end }}
