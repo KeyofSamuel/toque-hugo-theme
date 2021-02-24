@@ -38,10 +38,10 @@
 
   </div>
 
-  {{ "<!-- Music -->" | safeHTML }} 
+  {{ "<!-- Methods -->" | safeHTML }} 
   <div class="w3-col m4 w3-center">
 
-    {{ range where (where .Site.Pages "Section" "cooking" ) ".Params.title" "==" "Methods" }}
+    {{ range where (where .Site.Pages "Section" "cooking" ) ".Params.title" "==" "Methods and Reference" }}
       <div class="w3-container">
         <h1 class="w3-text-theme" style="font-size:3vw;" href="{{ .RelPermalink }}">{{ .Title }}</h1>
       </div>
