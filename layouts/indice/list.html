@@ -21,7 +21,7 @@
           {{ if eq .Type "recipe" }}
             
             <div>
-              <a href="{{ .URL | relURL}}" class="w3-button w3-hover-white">
+              <a href="{{ .Permalink | relURL}}" class="w3-button w3-hover-white">
                 {{ .Title }}
               </a>
             </div>
