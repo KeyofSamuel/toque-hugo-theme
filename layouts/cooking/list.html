@@ -46,7 +46,7 @@
     {{ range (where .Site.Pages.ByWeight "Section" .Section ) }}
       {{ if eq .Parent $parent }}
         
-        <div class="w3-quarter w3-center">
+        <div class="w3-quarter w3-center" style="height:450px">
 
           {{ if .Page.Params.Image }}
 
